@@ -483,3 +483,4 @@ function App() {
 }
 
 export default App;
+// Última actualización: 20 de julio de 2026 - Deploy Vercel
