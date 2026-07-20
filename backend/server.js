@@ -14,9 +14,16 @@ const REVIEWS_FILE = "reviews.json";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
+// ✅ CORS ACTUALIZADO CON VERCEL Y RENDER
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://tudominio.com"],
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:3000",
+      "https://ayoub.vercel.app",
+      "https://ayoub-1qok2e6v5-ayoub2004bensaid123-gmailcoms-projects.vercel.app",
+      "https://estudio-web-backend.onrender.com",
+    ],
     credentials: true,
   }),
 );
