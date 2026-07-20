@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <!-- Premium Tech Gradient: Cyan to Royal Blue to Deep Violet -->
+    <linearGradient id="abTechGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06B6D4" />
+      <stop offset="50%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+
+    <!-- Subtle Depth Shadow for Isometric/Overlapping Effect -->
+    <filter id="subtleShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- 
+    BRAND MONOGRAM: "A" + "B" FUSION
+    - Left chevron structure and ascending diagonal forms the "A".
+    - Right dual-loop terminal structures fuse with the negative space to complete the "B".
+    - Evokes an HTML tag </>, terminal cursor precision, and structural connections.
+  -->
+  <g transform="translate(100, 100)" filter="url(#subtleShadow)">
+    
+    <!-- MAIN INTERLOCKING STRUCTURE (The "A" backbone and "B" loops) -->
+    <!-- Clean geometry, perfect symmetry, 12px unified stroke weight logic in paths -->
+    <path d="M -35,35 
+             L -35,-20 
+             C -35,-42 -15,-55 0,-55 
+             C 15,-55 35,-42 35,-20 
+             C 35,-5 20,5 0,5 
+             L -10,5" 
+          fill="none" 
+          stroke="url(#abTechGrad)" 
+          stroke-width="13" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+
+    <!-- SECONDARY LOWER LOOP (Completing the structural "B" and the internal "A" crossbar connection) -->
+    <path d="M -10,5 
+             L 5,5 
+             C 22,5 38,18 38,35 
+             C 38,52 22,65 5,65 
+             L -35,65 
+             L -35,35 
+             L 5,35" 
+          fill="none" 
+          stroke="url(#abTechGrad)" 
+          stroke-width="13" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+
+    <!-- ARCHITECTURAL CODING ACCENT (Terminal/Bracket slash that defines the inner negative space of the "A") -->
+    <path d="M -20,-10 L 15,45" 
+          fill="none" 
+          stroke="#2563EB" 
+          stroke-width="11" 
+          stroke-linecap="round" 
+          opacity="0.9" />
+
+    <!-- TECH NODE / PIXEL ANCHOR (Signifying AI, Data points, and growth) -->
+    <circle cx="15" cy="45" r="6.5" fill="#06B6D4" />
+  </g>
+</svg>
