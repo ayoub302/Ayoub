@@ -14,17 +14,13 @@ const REVIEWS_FILE = "reviews.json";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-// ✅ CORS ACTUALIZADO CON VERCEL Y RENDER
+// ✅ CORS CON * - PERMITE TODOS LOS ORÍGENES
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:3000",
-      "https://ayoub.vercel.app",
-      "https://ayoub-1qok2e6v5-ayoub2004bensaid123-gmailcoms-projects.vercel.app",
-      "https://estudio-web-backend.onrender.com",
-    ],
+    origin: "*",
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
 app.use(express.json());
@@ -128,7 +124,6 @@ app.get("/api/reviews", (req, res) => {
 app.post("/api/reviews", (req, res) => {
   const { name, email, rating, comment } = req.body;
 
-  // Validar campos
   if (!name || !email || !rating || !comment) {
     return res.status(400).json({ error: "Todos los campos son obligatorios" });
   }
@@ -141,9 +136,7 @@ app.post("/api/reviews", (req, res) => {
     return res.status(400).json({ error: "Valoración inválida (1-5)" });
   }
 
-  // Crear nuevo comentario con avatar aleatorio
   const randomAvatar = AVATARS[Math.floor(Math.random() * AVATARS.length)];
-
   const newReview = {
     id: nextId++,
     name: name.trim(),
@@ -154,11 +147,11 @@ app.post("/api/reviews", (req, res) => {
   };
 
   reviews = [newReview, ...reviews];
-  saveReviews(reviews); // ✅ Guardar en archivo
+  saveReviews(reviews);
   res.status(201).json(newReview);
 });
 
-// ✅ Eliminar un comentario (opcional)
+// ✅ Eliminar un comentario
 app.delete("/api/reviews/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const index = reviews.findIndex((r) => r.id === id);
@@ -183,7 +176,6 @@ app.get("/api/health", (req, res) => {
 app.post("/api/create-payment-intent", async (req, res) => {
   try {
     console.log("📥 Petición recibida:", req.body);
-
     const { amount, currency = "eur" } = req.body;
 
     if (!amount || isNaN(amount) || amount <= 0) {
