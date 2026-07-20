@@ -78,7 +78,7 @@ const PaymentModal = ({ isOpen, amount, planName, onClose }) => {
     try {
       console.log("📤 Enviando petición al backend...");
       const response = await fetch(
-        "http://localhost:3000/api/create-payment-intent",
+        "https://estudio-web-backend.onrender.com/api/create-payment-intent",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

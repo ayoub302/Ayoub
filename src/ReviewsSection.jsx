@@ -17,7 +17,9 @@ const ReviewsSection = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/reviews");
+        const response = await fetch(
+          "https://estudio-web-backend.onrender.com/api/reviews",
+        );
         const data = await response.json();
         setReviews(data);
       } catch (error) {
@@ -64,16 +66,19 @@ const ReviewsSection = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await fetch("http://localhost:3000/api/reviews", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          rating: formData.rating,
-          comment: formData.comment.trim(),
-        }),
-      });
+      const response = await fetch(
+        "https://estudio-web-backend.onrender.com/api/reviews",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.name.trim(),
+            email: formData.email.trim(),
+            rating: formData.rating,
+            comment: formData.comment.trim(),
+          }),
+        },
+      );
 
       if (response.ok) {
         const newReview = await response.json();
